@@ -1,27 +1,59 @@
-﻿[
-  {
-    "date": "2018-05-06",
-    "temperatureC": 1,
-    "summary": "Freezing"
-  },
-  {
-    "date": "2018-05-07",
-    "temperatureC": 14,
-    "summary": "Bracing"
-  },
-  {
-    "date": "2018-05-08",
-    "temperatureC": -13,
-    "summary": "Freezing"
-  },
-  {
-    "date": "2018-05-09",
-    "temperatureC": -16,
-    "summary": "Balmy"
-  },
-  {
-    "date": "2018-05-10",
-    "temperatureC": -2,
-    "summary": "Chilly"
-  }
-]
+﻿{
+    "request_hash": "request:season:767100858262ca89297538c2e8a33382583484dd",
+    "request_cached": true,
+    "request_cache_expiry": 72451,
+    "season_name": "Winter",
+    "season_year": 2018,
+  "anime": [
+    {
+      "mal_id": 33352,
+      "url": "https://myanimelist.net/anime/33352/Violet_Evergarden",
+      "title": "Violet Evergarden",
+      "image_url": "https://cdn.myanimelist.net/images/anime/1795/95088.jpg",
+      "synopsis": "The Great War finally came to an end after four long years of conflict;",
+      "type": "TV",
+      "airing_start": "2018-01-10T15:00:00+00:00",
+      "episodes": 13,
+      "members": 1374351,
+      "genres": [
+        {
+          "mal_id": 8,
+          "type": "anime",
+          "name": "Drama",
+          "url": "https://myanimelist.net/anime/genre/8/Drama"
+        },
+        {
+          "mal_id": 10,
+          "type": "anime",
+          "name": "Fantasy",
+          "url": "https://myanimelist.net/anime/genre/10/Fantasy"
+        },
+        {
+          "mal_id": 36,
+          "type": "anime",
+          "name": "Slice of Life",
+          "url": "https://myanimelist.net/anime/genre/36/Slice_of_Life"
+        }
+      ],
+      "explicit_genres": [],
+      "themes": [],
+      "demographics": [],
+      "source": "Light novel",
+      "producers": [
+        {
+          "mal_id": 2,
+          "type": "anime",
+          "name": "Kyoto Animation",
+          "url": "https://myanimelist.net/anime/producer/2/Kyoto_Animation"
+        }
+      ],
+      "score": 8.66,
+      "licensors": [
+        "Funimation"
+      ],
+      "r18": false,
+      "kids": false,
+      "continuing": false
+    }
+  ]
+}
