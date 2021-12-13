@@ -1,8 +1,6 @@
 ﻿@page "/season"
 @inject HttpClient Http
 
-<h1>Weather forecast</h1>
-
 @if (season == null)
 {
     <p><em>Loading...</em></p>
@@ -10,20 +8,81 @@
 else
 {
 
-    @foreach (var entry in season.anime)
-    {
-        @if (entry.r18 == false)
+<section class="">
+    <div class="top1">
+        <div class="top1-horizontal">
+            <div class="top1-vertical">
+                <div class="top1-content">
+                    <div class="top1-content-title"></div>
+                    <p class="top1-content-synopsis"></p>
+                    <div class="top1-action">
+                        <a href="/details/anime/40456" class="featured--content--action--button">
+                            <p>Details</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separator d-flex">
+        <h3 class="text-uppercase fw-bolder ml-5" style="font-weight: 600;">Currently Airing</h3>
+        <div class="line align-self-center mx-5 mb-2"></div>
+        <select class="mr-5 px-3" @onchange="setType">
+            <option value="all">All</option>
+            <option value="TV">TV</option>
+            <option value="ONA">ONA</option>
+            <option value="OVA">OVA</option>
+            <option value="Movie">Movie</option>
+            <option value="Special">Special</option>
+            <option value="-">Unknown</option>
+        </select>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        @foreach (var entry in season.anime)
         {
-            <p>@entry.title</p>
-            <p>@entry.type</p>
-            <img src="@entry.image_url" />
+            @if (entry.r18 == false && type == "all")
+            {
+                <div class="anime">
+                    <a href="/anime/@entry.mal_id" class="item">
+                        <img src="@entry.image_url" alt="@entry.type" class="card-image">
+                        <div class="item-cotent">
+                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">@entry.title</div>
+                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">
+                                <div>@entry.type</div>
+                                <div>@entry.airing_start</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+            else if (entry.r18 == false && entry.type == type)
+            {
+                <div class="anime">
+                    <a href="/anime/@entry.mal_id" class="item">
+                        <img src="@entry.image_url" alt="@entry.type" class="card-image">
+                        <div class="item-cotent">
+                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">@entry.title</div>
+                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">
+                                <div>@entry.type</div>
+                                <div>@entry.airing_start</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
         }
-    }
+    </div>
+
+
+</section>
+
 }
 
 @code {
     private AnimeSeason season;
     private ExplicitGenre e;
+    private string type = "all";
 
     protected override async Task OnInitializedAsync()
     {
@@ -91,5 +150,10 @@ else
         public string season_name { get; set; }
         public int season_year { get; set; }
         public IList<Anime> anime { get; set; }
+    }
+
+    public void setType(ChangeEventArgs e)
+    {
+        type = e.Value.ToString();
     }
 }

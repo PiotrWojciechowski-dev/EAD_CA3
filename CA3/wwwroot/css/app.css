@@ -3,6 +3,7 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #141414;
+    color: #fff;
 }
 
 a, .btn-link {
@@ -16,7 +17,7 @@ a, .btn-link {
 }
 
 .content {
-    padding-top: 1.1rem;
+    
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -49,3 +50,72 @@ a, .btn-link {
     right: 0.75rem;
     top: 0.5rem;
 }
+
+.home {
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.separator .line {
+    height: 3px;
+    flex: 1;
+    background-color: #fff;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.anime img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    position: absolute;
+}
+
+.item:hover {
+    transform: scale(1);
+    opacity: 1;
+    transition: .3s ease-in-out;
+    color: white;
+}
+
+.item-cotent:hover {
+    transform: scale(1);
+    opacity: 1;
+    background-color: rgba(0,0,0,.5);
+    transition: .3s ease-in-out;
+}
+
+.item-cotent {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .3s ease-in-out;
+}
+
+
+
+
