@@ -22,5 +22,14 @@ namespace CA3Tests
             IWebElement HomePageHeader = driver.FindElement(By.Id("title"));
             Assert.IsTrue(HomePageHeader.Text.Contains("Anime Archive"));
         }
+
+        [TestMethod]
+        public void FindCurrentSeason()
+        {
+            driver.Navigate().GoToUrl("https://pwca3ead.z33.web.core.windows.net/season");
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            IWebElement AnimeEntry = driver.FindElement(By.ClassName("item"));
+            Assert.IsTrue(AnimeEntry.Text.Contains("anime/48926"));
+        }
     }
 }
