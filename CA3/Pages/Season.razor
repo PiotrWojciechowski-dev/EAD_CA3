@@ -9,21 +9,7 @@ else
 {
 
 <section class="">
-    <div class="top1">
-        <div class="top1-horizontal">
-            <div class="top1-vertical">
-                <div class="top1-content">
-                    <div class="top1-content-title"></div>
-                    <p class="top1-content-synopsis"></p>
-                    <div class="top1-action">
-                        <a href="/details/anime/40456" class="featured--content--action--button">
-                            <p>Details</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="separator d-flex">
         <h3 class="text-uppercase fw-bolder ml-5" style="font-weight: 600;">Currently Airing</h3>
         <div class="line align-self-center mx-5 mb-2"></div>
@@ -43,11 +29,11 @@ else
         {
             @if (entry.r18 == false && type == "all")
             {
-                <div class="anime">
+                <div class="anime-entry">
                     <a href="/anime/@entry.mal_id" class="item">
-                        <img src="@entry.image_url" alt="@entry.type" class="card-image">
+                        <img src="@entry.image_url" alt="@entry.type">
                         <div class="item-cotent">
-                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">@entry.title</div>
+                            <div class="fw-bolder mt-2 text-uppercase text-center anime-title" style="font-weight: 600;">@entry.title</div>
                             <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">
                                 <div>@entry.type</div>
                                 <div>@entry.airing_start</div>
@@ -58,11 +44,11 @@ else
             }
             else if (entry.r18 == false && entry.type == type)
             {
-                <div class="anime">
+                <div class="anime-entry">
                     <a href="/anime/@entry.mal_id" class="item">
-                        <img src="@entry.image_url" alt="@entry.type" class="card-image">
+                        <img src="@entry.image_url" alt="@entry.type">
                         <div class="item-cotent">
-                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">@entry.title</div>
+                            <div class="fw-bolder mt-2 text-uppercase text-center" id="anime-title2" style="font-weight: 600;">@entry.title</div>
                             <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">
                                 <div>@entry.type</div>
                                 <div>@entry.airing_start</div>

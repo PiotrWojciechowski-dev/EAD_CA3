@@ -1,0 +1,104 @@
+﻿@page "/search"
+@inject HttpClient Http
+
+<div class="row mt-5">
+    <div class="container">
+        <div class="col-md-12 d-flex justify-content-center">
+            <form @onsubmit="SearchAnime" class="d-flex w-75 ml-5 search">
+                <input @bind="@searchText" class="form-control flex-grow-1" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark text-white" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center mt-2">
+            <p class="text-white">Try searching for an anime eg. Gundam</p>
+        </div>
+    </div>
+</div>
+
+
+@if (response == null)
+{
+    <p color="text-danger">@ErrorMessage</p>
+}
+else
+{
+<section class="">
+    <div class="separator d-flex">
+        <div class="line align-self-center mx-5 mb-2"></div>
+        <h3 class="text-uppercase fw-bolder ml-2" style="font-weight: 600;">Results</h3>
+        <div class="line align-self-center mx-5 mb-2"></div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        @foreach (var entry in response.results)
+        {
+
+                <div class="anime-entry">
+                    <a href="/anime/@entry.mal_id" class="item">
+                        <img src="@entry.image_url" alt="@entry.type">
+                        <div class="item-cotent">
+                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">@entry.title</div>
+                            <div class="fw-bolder mt-2 text-uppercase text-center" style="font-weight: 600;">
+                                <div>@entry.type</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        }
+    </div>
+
+
+</section>
+}
+
+
+@code {
+    private Root response;
+    public string searchText;
+    private string ErrorMessage;
+
+    public async Task SearchAnime()
+    {
+        if (searchText != null)
+        {
+            string newSearchText = searchText.Replace(" ", "%20");
+            try
+            {
+                response = await Http.GetFromJsonAsync<Root>($"https://api.jikan.moe/v3/search/anime?q={newSearchText}&page=1&genre=12&genre_exclude=1");
+                Console.WriteLine(response.results);
+                ErrorMessage = String.Empty;
+            }
+            catch(Exception e) {;
+                ErrorMessage = e.Message;
+            }
+        }
+        else
+        {
+            ErrorMessage = "Please enter a search value";
+        }
+    }
+
+    public class Result
+    {
+        public int mal_id { get; set; }
+        public string url { get; set; }
+        public string image_url { get; set; }
+        public string title { get; set; }
+        public bool airing { get; set; }
+        public string synopsis { get; set; }
+        public string type { get; set; }
+        public int episodes { get; set; }
+        public double score { get; set; }
+        public int members { get; set; }
+        public string rated { get; set; }
+    }
+
+    public class Root
+    {
+        public string request_hash { get; set; }
+        public bool request_cached { get; set; }
+        public int request_cache_expiry { get; set; }
+        public IList<Result> results { get; set; }
+        public int last_page { get; set; }
+    }
+}
